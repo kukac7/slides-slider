@@ -51,9 +51,16 @@ function display_sp_slider() {
     // Creating a new side loop
     while ( $the_query->have_posts() ) : $the_query->the_post();
           
+          	$result .='<div class="slide">';
             // Displaying the content
             $the_url = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $type);
-            $result .='<div class="slide"><img title="'.get_the_title().'" src="' . $the_url[0] . '" data-thumb="' . $the_url[0] . '" alt=""/><div class="testimonial">'.get_the_content().'</div></div>';
+            if ($the_url != '') {
+            $result .='<img title="'.get_the_title().'" src="' . $the_url[0] . '" data-thumb="' . $the_url[0] . '" alt=""/><div class="caption">'.get_the_content().'</div>';
+            }
+            else {
+            $result .='<div class="caption">'.get_the_content().'</div>';
+            }
+            $result .='</div>';
      
     endwhile;    
  
