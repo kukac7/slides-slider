@@ -1,0 +1,1 @@
+http://slidesjs.com/ slider for wordpress
